@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9624E81D128C9FF5003ECC22 /* dfu.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E80D128C9FF5003ECC22 /* dfu.c */; };
+		9624E81E128C9FF5003ECC22 /* idevicerestore.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E80F128C9FF5003ECC22 /* idevicerestore.c */; };
+		9624E81F128C9FF5003ECC22 /* img3.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E811128C9FF5003ECC22 /* img3.c */; };
+		9624E820128C9FF5003ECC22 /* ipsw.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E813128C9FF5003ECC22 /* ipsw.c */; };
+		9624E821128C9FF5003ECC22 /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E815128C9FF5003ECC22 /* normal.c */; };
+		9624E822128C9FF5003ECC22 /* recovery.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E817128C9FF5003ECC22 /* recovery.c */; };
+		9624E823128C9FF5003ECC22 /* restore.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E819128C9FF5003ECC22 /* restore.c */; };
+		9624E824128C9FF5003ECC22 /* tss.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E81B128C9FF5003ECC22 /* tss.c */; };
+		9698ABBC17EF1D8900C9079F /* asr.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB117EF1D8900C9079F /* asr.c */; };
+		9698ABBD17EF1D8900C9079F /* common.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB317EF1D8900C9079F /* common.c */; };
+		9698ABBE17EF1D8900C9079F /* download.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB517EF1D8900C9079F /* download.c */; };
+		9698ABBF17EF1D8900C9079F /* libirecovery.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB717EF1D8900C9079F /* libirecovery.c */; };
+		9698ABC017EF1D8900C9079F /* limera1n.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABBA17EF1D8900C9079F /* limera1n.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9624E7FB128C9F55003ECC22 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9624E7FD128C9F55003ECC22 /* idevicerestore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = idevicerestore; sourceTree = BUILT_PRODUCTS_DIR; };
+		9624E80D128C9FF5003ECC22 /* dfu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dfu.c; sourceTree = "<group>"; };
+		9624E80E128C9FF5003ECC22 /* dfu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dfu.h; sourceTree = "<group>"; };
+		9624E80F128C9FF5003ECC22 /* idevicerestore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = idevicerestore.c; sourceTree = "<group>"; };
+		9624E810128C9FF5003ECC22 /* idevicerestore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idevicerestore.h; sourceTree = "<group>"; };
+		9624E811128C9FF5003ECC22 /* img3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = img3.c; sourceTree = "<group>"; };
+		9624E812128C9FF5003ECC22 /* img3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = img3.h; sourceTree = "<group>"; };
+		9624E813128C9FF5003ECC22 /* ipsw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ipsw.c; sourceTree = "<group>"; };
+		9624E814128C9FF5003ECC22 /* ipsw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ipsw.h; sourceTree = "<group>"; };
+		9624E815128C9FF5003ECC22 /* normal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = normal.c; sourceTree = "<group>"; };
+		9624E816128C9FF5003ECC22 /* normal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = normal.h; sourceTree = "<group>"; };
+		9624E817128C9FF5003ECC22 /* recovery.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = recovery.c; sourceTree = "<group>"; };
+		9624E818128C9FF5003ECC22 /* recovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recovery.h; sourceTree = "<group>"; };
+		9624E819128C9FF5003ECC22 /* restore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = restore.c; sourceTree = "<group>"; };
+		9624E81A128C9FF5003ECC22 /* restore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = restore.h; sourceTree = "<group>"; };
+		9624E81B128C9FF5003ECC22 /* tss.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tss.c; sourceTree = "<group>"; };
+		9624E81C128C9FF5003ECC22 /* tss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tss.h; sourceTree = "<group>"; };
+		9624E82C128CA73D003ECC22 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
+		9624E82D128CA73D003ECC22 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		9624E82E128CA73D003ECC22 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		9624E82F128CA73D003ECC22 /* INSTALL */ = {isa = PBXFileReference; lastKnownFileType = text; path = INSTALL; sourceTree = "<group>"; };
+		9624E830128CA73D003ECC22 /* NEWS */ = {isa = PBXFileReference; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
+		9624E831128CA73D003ECC22 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		9624E832128CA73D003ECC22 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		9698ABB117EF1D8900C9079F /* asr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = asr.c; sourceTree = "<group>"; };
+		9698ABB217EF1D8900C9079F /* asr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asr.h; sourceTree = "<group>"; };
+		9698ABB317EF1D8900C9079F /* common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = common.c; sourceTree = "<group>"; };
+		9698ABB417EF1D8900C9079F /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		9698ABB517EF1D8900C9079F /* download.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = download.c; sourceTree = "<group>"; };
+		9698ABB617EF1D8900C9079F /* download.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = download.h; sourceTree = "<group>"; };
+		9698ABB717EF1D8900C9079F /* libirecovery.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libirecovery.c; sourceTree = "<group>"; };
+		9698ABB817EF1D8900C9079F /* libirecovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libirecovery.h; sourceTree = "<group>"; };
+		9698ABB917EF1D8900C9079F /* limera1n_payload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = limera1n_payload.h; sourceTree = "<group>"; };
+		9698ABBA17EF1D8900C9079F /* limera1n.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = limera1n.c; sourceTree = "<group>"; };
+		9698ABBB17EF1D8900C9079F /* limera1n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = limera1n.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9624E7FA128C9F55003ECC22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9624E7E7128C9EC4003ECC22 = {
+			isa = PBXGroup;
+			children = (
+				9624E82B128CA706003ECC22 /* Documentation */,
+				9624E80C128C9F89003ECC22 /* Source */,
+				9624E829128CA6EB003ECC22 /* Libraries and Frameworks */,
+				9624E7FE128C9F55003ECC22 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9624E7FE128C9F55003ECC22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9624E7FD128C9F55003ECC22 /* idevicerestore */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9624E80C128C9F89003ECC22 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				9698ABB117EF1D8900C9079F /* asr.c */,
+				9698ABB217EF1D8900C9079F /* asr.h */,
+				9698ABB317EF1D8900C9079F /* common.c */,
+				9698ABB417EF1D8900C9079F /* common.h */,
+				9624E80D128C9FF5003ECC22 /* dfu.c */,
+				9624E80E128C9FF5003ECC22 /* dfu.h */,
+				9698ABB517EF1D8900C9079F /* download.c */,
+				9698ABB617EF1D8900C9079F /* download.h */,
+				9624E80F128C9FF5003ECC22 /* idevicerestore.c */,
+				9624E810128C9FF5003ECC22 /* idevicerestore.h */,
+				9624E811128C9FF5003ECC22 /* img3.c */,
+				9624E812128C9FF5003ECC22 /* img3.h */,
+				9624E813128C9FF5003ECC22 /* ipsw.c */,
+				9624E814128C9FF5003ECC22 /* ipsw.h */,
+				9698ABB717EF1D8900C9079F /* libirecovery.c */,
+				9698ABB817EF1D8900C9079F /* libirecovery.h */,
+				9698ABBA17EF1D8900C9079F /* limera1n.c */,
+				9698ABBB17EF1D8900C9079F /* limera1n.h */,
+				9698ABB917EF1D8900C9079F /* limera1n_payload.h */,
+				9624E815128C9FF5003ECC22 /* normal.c */,
+				9624E816128C9FF5003ECC22 /* normal.h */,
+				9624E817128C9FF5003ECC22 /* recovery.c */,
+				9624E818128C9FF5003ECC22 /* recovery.h */,
+				9624E819128C9FF5003ECC22 /* restore.c */,
+				9624E81A128C9FF5003ECC22 /* restore.h */,
+				9624E81B128C9FF5003ECC22 /* tss.c */,
+				9624E81C128C9FF5003ECC22 /* tss.h */,
+			);
+			name = Source;
+			path = src;
+			sourceTree = "<group>";
+		};
+		9624E829128CA6EB003ECC22 /* Libraries and Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Libraries and Frameworks";
+			sourceTree = "<group>";
+		};
+		9624E82B128CA706003ECC22 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				9624E82C128CA73D003ECC22 /* AUTHORS */,
+				9624E82D128CA73D003ECC22 /* ChangeLog */,
+				9624E82E128CA73D003ECC22 /* COPYING */,
+				9624E82F128CA73D003ECC22 /* INSTALL */,
+				9624E830128CA73D003ECC22 /* NEWS */,
+				9624E831128CA73D003ECC22 /* README */,
+				9624E832128CA73D003ECC22 /* TODO */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9624E7FC128C9F55003ECC22 /* idevicerestore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9624E805128C9F56003ECC22 /* Build configuration list for PBXNativeTarget "idevicerestore" */;
+			buildPhases = (
+				9624E7F9128C9F55003ECC22 /* Sources */,
+				9624E7FA128C9F55003ECC22 /* Frameworks */,
+				9624E7FB128C9F55003ECC22 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = idevicerestore;
+			productName = idevicerestore;
+			productReference = 9624E7FD128C9F55003ECC22 /* idevicerestore */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9624E7E9128C9EC4003ECC22 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = 9624E7EC128C9EC4003ECC22 /* Build configuration list for PBXProject "idevicerestore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9624E7E7128C9EC4003ECC22;
+			productRefGroup = 9624E7FE128C9F55003ECC22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9624E7FC128C9F55003ECC22 /* idevicerestore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9624E7F9128C9F55003ECC22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9624E81D128C9FF5003ECC22 /* dfu.c in Sources */,
+				9624E81E128C9FF5003ECC22 /* idevicerestore.c in Sources */,
+				9624E81F128C9FF5003ECC22 /* img3.c in Sources */,
+				9698ABBC17EF1D8900C9079F /* asr.c in Sources */,
+				9624E820128C9FF5003ECC22 /* ipsw.c in Sources */,
+				9624E821128C9FF5003ECC22 /* normal.c in Sources */,
+				9698ABBF17EF1D8900C9079F /* libirecovery.c in Sources */,
+				9698ABBE17EF1D8900C9079F /* download.c in Sources */,
+				9698ABBD17EF1D8900C9079F /* common.c in Sources */,
+				9624E822128C9FF5003ECC22 /* recovery.c in Sources */,
+				9698ABC017EF1D8900C9079F /* limera1n.c in Sources */,
+				9624E823128C9FF5003ECC22 /* restore.c in Sources */,
+				9624E824128C9FF5003ECC22 /* tss.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9624E7EE128C9EC4003ECC22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		9624E7EF128C9EC4003ECC22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+			};
+			name = Release;
+		};
+		9624E803128C9F56003ECC22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9624E804128C9F56003ECC22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9624E7EC128C9EC4003ECC22 /* Build configuration list for PBXProject "idevicerestore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9624E7EE128C9EC4003ECC22 /* Debug */,
+				9624E7EF128C9EC4003ECC22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9624E805128C9F56003ECC22 /* Build configuration list for PBXNativeTarget "idevicerestore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9624E803128C9F56003ECC22 /* Debug */,
+				9624E804128C9F56003ECC22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9624E7E9128C9EC4003ECC22 /* Project object */;
+}
