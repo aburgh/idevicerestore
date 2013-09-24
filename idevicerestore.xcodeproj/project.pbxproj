@@ -20,6 +20,10 @@
 		9698ABBE17EF1D8900C9079F /* download.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB517EF1D8900C9079F /* download.c */; };
 		9698ABBF17EF1D8900C9079F /* libirecovery.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB717EF1D8900C9079F /* libirecovery.c */; };
 		9698ABC017EF1D8900C9079F /* limera1n.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABBA17EF1D8900C9079F /* limera1n.c */; };
+		96B79FB417EF4214008E32EB /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B79FB317EF4214008E32EB /* libcurl.dylib */; };
+		96B79FB917EF4DA3008E32EB /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 96B79FB717EF4DA3008E32EB /* plist.c */; };
+		96B79FBB17EF4E6A008E32EB /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B79FBA17EF4E6A008E32EB /* CoreFoundation.framework */; };
+		96B79FBD17EF4E90008E32EB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B79FBC17EF4E90008E32EB /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +74,11 @@
 		9698ABB917EF1D8900C9079F /* limera1n_payload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = limera1n_payload.h; sourceTree = "<group>"; };
 		9698ABBA17EF1D8900C9079F /* limera1n.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = limera1n.c; sourceTree = "<group>"; };
 		9698ABBB17EF1D8900C9079F /* limera1n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = limera1n.h; sourceTree = "<group>"; };
+		96B79FB317EF4214008E32EB /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
+		96B79FB717EF4DA3008E32EB /* plist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = plist.c; sourceTree = "<group>"; };
+		96B79FB817EF4DA3008E32EB /* plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plist.h; sourceTree = "<group>"; };
+		96B79FBA17EF4E6A008E32EB /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		96B79FBC17EF4E90008E32EB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96B79FBD17EF4E90008E32EB /* libz.dylib in Frameworks */,
+				96B79FBB17EF4E6A008E32EB /* CoreFoundation.framework in Frameworks */,
+				96B79FB417EF4214008E32EB /* libcurl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +143,7 @@
 				9624E81A128C9FF5003ECC22 /* restore.h */,
 				9624E81B128C9FF5003ECC22 /* tss.c */,
 				9624E81C128C9FF5003ECC22 /* tss.h */,
+				96B79FB617EF4DA3008E32EB /* plist */,
 			);
 			name = Source;
 			path = src;
@@ -139,6 +152,9 @@
 		9624E829128CA6EB003ECC22 /* Libraries and Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96B79FBA17EF4E6A008E32EB /* CoreFoundation.framework */,
+				96B79FB317EF4214008E32EB /* libcurl.dylib */,
+				96B79FBC17EF4E90008E32EB /* libz.dylib */,
 			);
 			name = "Libraries and Frameworks";
 			sourceTree = "<group>";
@@ -155,6 +171,15 @@
 				9624E832128CA73D003ECC22 /* TODO */,
 			);
 			name = Documentation;
+			sourceTree = "<group>";
+		};
+		96B79FB617EF4DA3008E32EB /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				96B79FB717EF4DA3008E32EB /* plist.c */,
+				96B79FB817EF4DA3008E32EB /* plist.h */,
+			);
+			path = plist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +242,7 @@
 				9698ABBE17EF1D8900C9079F /* download.c in Sources */,
 				9698ABBD17EF1D8900C9079F /* common.c in Sources */,
 				9624E822128C9FF5003ECC22 /* recovery.c in Sources */,
+				96B79FB917EF4DA3008E32EB /* plist.c in Sources */,
 				9698ABC017EF1D8900C9079F /* limera1n.c in Sources */,
 				9624E823128C9FF5003ECC22 /* restore.c in Sources */,
 				9624E824128C9FF5003ECC22 /* tss.c in Sources */,
@@ -229,7 +255,11 @@
 		9624E7EE128C9EC4003ECC22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
+				HEADER_SEARCH_PATHS = (
+					"\"$SRCROOT/src\"",
+					/usr/local/include,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -237,28 +267,33 @@
 		9624E7EF128C9EC4003ECC22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
+				HEADER_SEARCH_PATHS = (
+					"\"$SRCROOT/src\"",
+					/usr/local/include,
+				);
 			};
 			name = Release;
 		};
 		9624E803128C9F56003ECC22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
+				OTHER_LDFLAGS = (
+					"-lusb-1.0",
+					"-limobiledevice",
+					"-lzip",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -267,18 +302,19 @@
 		9624E804128C9F56003ECC22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PREBINDING = NO;
+				OTHER_LDFLAGS = (
+					"-lusb-1.0",
+					"-limobiledevice",
+					"-lzip",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
