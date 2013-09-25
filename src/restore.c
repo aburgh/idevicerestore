@@ -37,6 +37,7 @@
 #include "ipsw.h"
 #include "restore.h"
 #include "common.h"
+#include "ipsw.h"
 
 #define WAIT_FOR_STORAGE       11
 #define CREATE_PARTITION_MAP   12

@@ -32,6 +32,7 @@
 #include "download.h"
 #include "common.h"
 #include "idevicerestore.h"
+#include "download.h"
 
 #define BUFSIZE 0x100000
 

@@ -83,6 +83,7 @@ void fixup_tss(plist_t tss);
 int build_manifest_get_identity_count(plist_t build_manifest);
 int build_manifest_check_compatibility(plist_t build_manifest, const char* product);
 void build_manifest_get_version_information(plist_t build_manifest, struct idevicerestore_client_t* client);
+int build_manifest_get_identity_count(plist_t build_manifest);
 plist_t build_manifest_get_build_identity(plist_t build_manifest, uint32_t identity);
 int build_manifest_get_build_count(plist_t build_manifest);
 void build_identity_print_information(plist_t build_identity);

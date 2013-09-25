@@ -27,6 +27,7 @@
 #include <errno.h>
 #include <libgen.h>
 #include <time.h>
+#include <sys/stat.h>
 
 #include "common.h"
 

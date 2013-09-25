@@ -32,6 +32,7 @@
 #include "recovery.h"
 #include "idevicerestore.h"
 #include "common.h"
+#include "tss.h"
 
 int dfu_progress_callback(irecv_client_t client, const irecv_event_t* event) {
 	if (event->type == IRECV_PROGRESS) {
