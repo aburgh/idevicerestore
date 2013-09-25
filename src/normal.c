@@ -235,9 +235,10 @@ const char* normal_check_product_type(struct idevicerestore_client_t* client) {
 		char* udid = NULL;
 		lockdownd_unpair(lockdown, NULL);
 		idevice_get_udid(device, &udid);
-		if (udid) {
-			userpref_remove_device_record(udid);
-		}
+#warning Coming in trustdialog branch of libimobiledevice
+//		if (udid) {
+//			userpref_remove_device_record(udid);
+//		}
 		lockdown_error = lockdownd_client_new_with_handshake(device, &lockdown, "idevicerestore");
 	}
 	if (lockdown_error != LOCKDOWN_E_SUCCESS) {
