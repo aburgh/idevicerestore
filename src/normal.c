@@ -235,7 +235,7 @@ const char* normal_check_product_type(struct idevicerestore_client_t* client) {
 		char* udid = NULL;
 		lockdownd_unpair(lockdown, NULL);
 		idevice_get_udid(device, &udid);
-#warning Coming in trustdialog branch of libimobiledevice
+#warning Disabled until branch 'trustdialog' of libimobiledevice merged to 'master'.
 //		if (udid) {
 //			userpref_remove_device_record(udid);
 //		}
