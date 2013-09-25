@@ -18,8 +18,11 @@
 		9698ABBC17EF1D8900C9079F /* asr.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB117EF1D8900C9079F /* asr.c */; };
 		9698ABBD17EF1D8900C9079F /* common.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB317EF1D8900C9079F /* common.c */; };
 		9698ABBE17EF1D8900C9079F /* download.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB517EF1D8900C9079F /* download.c */; };
-		9698ABBF17EF1D8900C9079F /* libirecovery.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABB717EF1D8900C9079F /* libirecovery.c */; };
 		9698ABC017EF1D8900C9079F /* limera1n.c in Sources */ = {isa = PBXBuildFile; fileRef = 9698ABBA17EF1D8900C9079F /* limera1n.c */; };
+		96AA17DC17F3131D003C8B5F /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96AA17DB17F3131D003C8B5F /* libcrypto.dylib */; };
+		96AA17E317F31398003C8B5F /* fls.c in Sources */ = {isa = PBXBuildFile; fileRef = 96AA17DD17F31398003C8B5F /* fls.c */; };
+		96AA17E417F31398003C8B5F /* locking.c in Sources */ = {isa = PBXBuildFile; fileRef = 96AA17DF17F31398003C8B5F /* locking.c */; };
+		96AA17E517F31398003C8B5F /* mbn.c in Sources */ = {isa = PBXBuildFile; fileRef = 96AA17E117F31398003C8B5F /* mbn.c */; };
 		96B79FB417EF4214008E32EB /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B79FB317EF4214008E32EB /* libcurl.dylib */; };
 		96B79FB917EF4DA3008E32EB /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 96B79FB717EF4DA3008E32EB /* plist.c */; };
 		96B79FBB17EF4E6A008E32EB /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B79FBA17EF4E6A008E32EB /* CoreFoundation.framework */; };
@@ -69,11 +72,16 @@
 		9698ABB417EF1D8900C9079F /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		9698ABB517EF1D8900C9079F /* download.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = download.c; sourceTree = "<group>"; };
 		9698ABB617EF1D8900C9079F /* download.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = download.h; sourceTree = "<group>"; };
-		9698ABB717EF1D8900C9079F /* libirecovery.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libirecovery.c; sourceTree = "<group>"; };
-		9698ABB817EF1D8900C9079F /* libirecovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libirecovery.h; sourceTree = "<group>"; };
 		9698ABB917EF1D8900C9079F /* limera1n_payload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = limera1n_payload.h; sourceTree = "<group>"; };
 		9698ABBA17EF1D8900C9079F /* limera1n.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = limera1n.c; sourceTree = "<group>"; };
 		9698ABBB17EF1D8900C9079F /* limera1n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = limera1n.h; sourceTree = "<group>"; };
+		96AA17DB17F3131D003C8B5F /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		96AA17DD17F31398003C8B5F /* fls.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fls.c; sourceTree = "<group>"; };
+		96AA17DE17F31398003C8B5F /* fls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fls.h; sourceTree = "<group>"; };
+		96AA17DF17F31398003C8B5F /* locking.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = locking.c; sourceTree = "<group>"; };
+		96AA17E017F31398003C8B5F /* locking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = locking.h; sourceTree = "<group>"; };
+		96AA17E117F31398003C8B5F /* mbn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mbn.c; sourceTree = "<group>"; };
+		96AA17E217F31398003C8B5F /* mbn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mbn.h; sourceTree = "<group>"; };
 		96B79FB317EF4214008E32EB /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		96B79FB717EF4DA3008E32EB /* plist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = plist.c; sourceTree = "<group>"; };
 		96B79FB817EF4DA3008E32EB /* plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plist.h; sourceTree = "<group>"; };
@@ -86,8 +94,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96B79FBD17EF4E90008E32EB /* libz.dylib in Frameworks */,
 				96B79FBB17EF4E6A008E32EB /* CoreFoundation.framework in Frameworks */,
+				96AA17DC17F3131D003C8B5F /* libcrypto.dylib in Frameworks */,
+				96B79FBD17EF4E90008E32EB /* libz.dylib in Frameworks */,
 				96B79FB417EF4214008E32EB /* libcurl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +125,12 @@
 		9624E80C128C9F89003ECC22 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				96AA17DD17F31398003C8B5F /* fls.c */,
+				96AA17DE17F31398003C8B5F /* fls.h */,
+				96AA17DF17F31398003C8B5F /* locking.c */,
+				96AA17E017F31398003C8B5F /* locking.h */,
+				96AA17E117F31398003C8B5F /* mbn.c */,
+				96AA17E217F31398003C8B5F /* mbn.h */,
 				9698ABB117EF1D8900C9079F /* asr.c */,
 				9698ABB217EF1D8900C9079F /* asr.h */,
 				9698ABB317EF1D8900C9079F /* common.c */,
@@ -130,8 +145,6 @@
 				9624E812128C9FF5003ECC22 /* img3.h */,
 				9624E813128C9FF5003ECC22 /* ipsw.c */,
 				9624E814128C9FF5003ECC22 /* ipsw.h */,
-				9698ABB717EF1D8900C9079F /* libirecovery.c */,
-				9698ABB817EF1D8900C9079F /* libirecovery.h */,
 				9698ABBA17EF1D8900C9079F /* limera1n.c */,
 				9698ABBB17EF1D8900C9079F /* limera1n.h */,
 				9698ABB917EF1D8900C9079F /* limera1n_payload.h */,
@@ -155,6 +168,7 @@
 				96B79FBA17EF4E6A008E32EB /* CoreFoundation.framework */,
 				96B79FB317EF4214008E32EB /* libcurl.dylib */,
 				96B79FBC17EF4E90008E32EB /* libz.dylib */,
+				96AA17DB17F3131D003C8B5F /* libcrypto.dylib */,
 			);
 			name = "Libraries and Frameworks";
 			sourceTree = "<group>";
@@ -235,16 +249,18 @@
 				9624E81D128C9FF5003ECC22 /* dfu.c in Sources */,
 				9624E81E128C9FF5003ECC22 /* idevicerestore.c in Sources */,
 				9624E81F128C9FF5003ECC22 /* img3.c in Sources */,
+				96AA17E517F31398003C8B5F /* mbn.c in Sources */,
+				96AA17E317F31398003C8B5F /* fls.c in Sources */,
 				9698ABBC17EF1D8900C9079F /* asr.c in Sources */,
 				9624E820128C9FF5003ECC22 /* ipsw.c in Sources */,
 				9624E821128C9FF5003ECC22 /* normal.c in Sources */,
-				9698ABBF17EF1D8900C9079F /* libirecovery.c in Sources */,
 				9698ABBE17EF1D8900C9079F /* download.c in Sources */,
 				9698ABBD17EF1D8900C9079F /* common.c in Sources */,
 				9624E822128C9FF5003ECC22 /* recovery.c in Sources */,
 				96B79FB917EF4DA3008E32EB /* plist.c in Sources */,
 				9698ABC017EF1D8900C9079F /* limera1n.c in Sources */,
 				9624E823128C9FF5003ECC22 /* restore.c in Sources */,
+				96AA17E417F31398003C8B5F /* locking.c in Sources */,
 				9624E824128C9FF5003ECC22 /* tss.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,9 +306,10 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
+					"-lzip",
 					"-lusb-1.0",
 					"-limobiledevice",
-					"-lzip",
+					"-lirecovery",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -311,9 +328,10 @@
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
+					"-lzip",
 					"-lusb-1.0",
 					"-limobiledevice",
-					"-lzip",
+					"-lirecovery",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
