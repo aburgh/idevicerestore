@@ -436,7 +436,7 @@ int recovery_send_kernelcache(struct idevicerestore_client_t* client, plist_t bu
 	}
 
 	recovery_error = irecv_send_command(client->recovery->client, "bootx");
-	if (recovery_error != IRECV_E_SUCCESS) {
+	if (recovery_error != IRECV_E_SUCCESS && recovery_error != IRECV_E_UNKNOWN_ERROR) {
 		error("ERROR: Unable to execute %s\n", component);
 		return -1;
 	}
