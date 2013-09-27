@@ -30,6 +30,30 @@
 		96B79FBD17EF4E90008E32EB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B79FBC17EF4E90008E32EB /* libz.dylib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		960B300C17F5F7F400FF2CAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 960B300717F5F7F300FF2CAC /* libirecovery.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96AA17BB17F2F8CA003C8B5F;
+			remoteInfo = libirecovery;
+		};
+		960B300E17F5F7F400FF2CAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 960B300717F5F7F300FF2CAC /* libirecovery.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96AA17CA17F2FBBB003C8B5F;
+			remoteInfo = irecovery;
+		};
+		960B301017F5F87100FF2CAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 960B300717F5F7F300FF2CAC /* libirecovery.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 96AA17BA17F2F8CA003C8B5F;
+			remoteInfo = libirecovery;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		9624E7FB128C9F55003ECC22 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -44,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		960B300717F5F7F300FF2CAC /* libirecovery.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libirecovery.xcodeproj; path = libirecovery/libirecovery.xcodeproj; sourceTree = "<group>"; };
 		9624E7FD128C9F55003ECC22 /* idevicerestore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = idevicerestore; sourceTree = BUILT_PRODUCTS_DIR; };
 		9624E80D128C9FF5003ECC22 /* dfu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dfu.c; sourceTree = "<group>"; };
 		9624E80E128C9FF5003ECC22 /* dfu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dfu.h; sourceTree = "<group>"; };
@@ -107,9 +132,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960B300817F5F7F300FF2CAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				960B300D17F5F7F400FF2CAC /* libirecovery.dylib */,
+				960B300F17F5F7F400FF2CAC /* irecovery */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9624E7E7128C9EC4003ECC22 = {
 			isa = PBXGroup;
 			children = (
+				960B300717F5F7F300FF2CAC /* libirecovery.xcodeproj */,
 				9624E82B128CA706003ECC22 /* Documentation */,
 				9624E80C128C9F89003ECC22 /* Source */,
 				9624E829128CA6EB003ECC22 /* Libraries and Frameworks */,
@@ -214,6 +249,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				960B301117F5F87100FF2CAC /* PBXTargetDependency */,
 			);
 			name = idevicerestore;
 			productName = idevicerestore;
@@ -238,12 +274,35 @@
 			mainGroup = 9624E7E7128C9EC4003ECC22;
 			productRefGroup = 9624E7FE128C9F55003ECC22 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 960B300817F5F7F300FF2CAC /* Products */;
+					ProjectRef = 960B300717F5F7F300FF2CAC /* libirecovery.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9624E7FC128C9F55003ECC22 /* idevicerestore */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		960B300D17F5F7F400FF2CAC /* libirecovery.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libirecovery.dylib;
+			remoteRef = 960B300C17F5F7F400FF2CAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		960B300F17F5F7F400FF2CAC /* irecovery */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = irecovery;
+			remoteRef = 960B300E17F5F7F400FF2CAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9624E7F9128C9F55003ECC22 /* Sources */ = {
@@ -270,6 +329,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		960B301117F5F87100FF2CAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libirecovery;
+			targetProxy = 960B301017F5F87100FF2CAC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9624E7EE128C9EC4003ECC22 /* Debug */ = {
