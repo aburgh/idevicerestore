@@ -19,8 +19,4 @@ src/.libs
 src/.deps
 stamp-h1
 .DS_Store
-*.mode1v3
-*.pbxuser
-*.perspectivev3
 xcuserdata
-*.xccheckout
