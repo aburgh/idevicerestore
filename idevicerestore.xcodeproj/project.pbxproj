@@ -1033,6 +1033,7 @@
 				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$SRCROOT/src\"",
+					"\"$CONFIGURATION_BUILD_DIR/usr/local/include\"",
 					/usr/local/include,
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -1045,6 +1046,7 @@
 				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$SRCROOT/src\"",
+					"\"$CONFIGURATION_BUILD_DIR/usr/local/include\"",
 					/usr/local/include,
 				);
 			};
