@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:idevicerestore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:libzip/xcode/libzip.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:libimobiledevice/deps/usbmuxd/usbmuxd.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:libimobiledevice/libimobiledevice.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:libirecovery/libirecovery.xcodeproj">
+   </FileRef>
+</Workspace>
