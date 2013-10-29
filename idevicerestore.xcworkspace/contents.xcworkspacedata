@@ -8,7 +8,7 @@
       location = "group:libzip/xcode/libzip.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:libimobiledevice/deps/usbmuxd/usbmuxd.xcodeproj">
+      location = "group:libimobiledevice/deps/libusbmuxd/libusbmuxd.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:libimobiledevice/libimobiledevice.xcodeproj">

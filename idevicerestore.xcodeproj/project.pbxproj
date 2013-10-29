@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		96093B46181C4AC500833F74 /* libimobiledevice.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96093B42181C4AC500833F74 /* libimobiledevice.dylib */; };
 		96093B47181C4AC500833F74 /* libirecovery.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96093B43181C4AC500833F74 /* libirecovery.dylib */; };
-		96093B48181C4AC500833F74 /* libusbmuxd.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96093B44181C4AC500833F74 /* libusbmuxd.dylib */; };
 		96093B49181C4AC500833F74 /* libzip.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96093B45181C4AC500833F74 /* libzip.dylib */; };
 		9624E81D128C9FF5003ECC22 /* dfu.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E80D128C9FF5003ECC22 /* dfu.c */; };
 		9624E81E128C9FF5003ECC22 /* idevicerestore.c in Sources */ = {isa = PBXBuildFile; fileRef = 9624E80F128C9FF5003ECC22 /* idevicerestore.c */; };
@@ -107,7 +106,6 @@
 			files = (
 				96093B46181C4AC500833F74 /* libimobiledevice.dylib in Frameworks */,
 				96093B47181C4AC500833F74 /* libirecovery.dylib in Frameworks */,
-				96093B48181C4AC500833F74 /* libusbmuxd.dylib in Frameworks */,
 				96093B49181C4AC500833F74 /* libzip.dylib in Frameworks */,
 				96B79FBB17EF4E6A008E32EB /* CoreFoundation.framework in Frameworks */,
 				96AA17DC17F3131D003C8B5F /* libcrypto.dylib in Frameworks */,
