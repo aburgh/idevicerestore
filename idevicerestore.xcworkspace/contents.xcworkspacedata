@@ -16,4 +16,7 @@
    <FileRef
       location = "group:libirecovery/libirecovery.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:deps/libplist/libplist.xcodeproj">
+   </FileRef>
 </Workspace>

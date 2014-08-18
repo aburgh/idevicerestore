@@ -7,3 +7,6 @@
 [submodule "libzip"]
 	path = libzip
 	url = https://github.com/aburgh/libzip.git
+[submodule "deps/libplist"]
+	path = deps/libplist
+	url = https://github.com/aburgh/libplist.git
