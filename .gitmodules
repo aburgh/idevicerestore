@@ -1,12 +1,12 @@
-[submodule "libirecovery"]
-	path = libirecovery
-	url = https://github.com/aburgh/libirecovery.git
-[submodule "libimobiledevice"]
-	path = libimobiledevice
-	url = https://github.com/aburgh/libimobiledevice.git
-[submodule "libzip"]
-	path = libzip
-	url = https://github.com/aburgh/libzip.git
 [submodule "deps/libplist"]
 	path = deps/libplist
 	url = https://github.com/aburgh/libplist.git
+[submodule "deps/libirecovery"]
+	path = deps/libirecovery
+	url = https://github.com/aburgh/libirecovery.git
+[submodule "deps/libimobiledevice"]
+	path = deps/libimobiledevice
+	url = https://github.com/aburgh/libimobiledevice.git
+[submodule "deps/libzip"]
+	path = deps/libzip
+	url = https://github.com/aburgh/libzip.git

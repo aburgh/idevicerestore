@@ -5,16 +5,16 @@
       location = "container:idevicerestore.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:libzip/xcode/libzip.xcodeproj">
+      location = "group:deps/libzip/xcode/libzip.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:libimobiledevice/deps/libusbmuxd/libusbmuxd.xcodeproj">
+      location = "group:deps/libimobiledevice/deps/libusbmuxd/libusbmuxd.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:libimobiledevice/libimobiledevice.xcodeproj">
+      location = "group:deps/libimobiledevice/libimobiledevice.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:libirecovery/libirecovery.xcodeproj">
+      location = "group:deps/libirecovery/libirecovery.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:deps/libplist/libplist.xcodeproj">
