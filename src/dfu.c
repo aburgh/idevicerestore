@@ -162,12 +162,11 @@ int dfu_send_component(struct idevicerestore_client_t* client, plist_t build_ide
 	uint32_t size = 0;
 	unsigned char* data = NULL;
 	char* path = NULL;
-	unsigned char* blob = NULL;
 	irecv_error_t err = 0;
 	int flag = 1;
 
 	if (client->tss) {
-		if (tss_get_entry_path(client->tss, component, &path) < 0) {
+		if (tss_response_get_path_by_entry(client->tss, component, &path) < 0) {
 			debug("NOTE: No path for component %s in TSS, will fetch from build_identity\n", component);
 		}
 	}
@@ -180,16 +179,28 @@ int dfu_send_component(struct idevicerestore_client_t* client, plist_t build_ide
 		}
 	}
 
-	if (ipsw_get_component_by_path(client->ipsw, client->tss, component, path, &data, &size) < 0) {
-		error("ERROR: Unable to get component: %s\n", component);
+	unsigned char* component_data = NULL;
+	unsigned int component_size = 0;
+
+	if (extract_component(client->ipsw, path, &component_data, &component_size) < 0) {
+		error("ERROR: Unable to extract component: %s\n", component);
 		free(path);
 		return -1;
 	}
 
-	if (!(client->flags & FLAG_CUSTOM) && (strcmp(component, "iBEC") == 0)) {
+	if (personalize_component(component, component_data, component_size, client->tss, &data, &size) < 0) {
+		error("ERROR: Unable to get personalized component: %s\n", component);
+		free(component_data);
+		free(path);
+		return -1;
+	}
+	free(component_data);
+	component_data = NULL;
+
+	if ((client->build_major > 8) && (client->build_major < 11) && !(client->flags & FLAG_CUSTOM) && (strcmp(component, "iBEC") == 0)) {
 		unsigned char* ticket = NULL;
 		unsigned int tsize = 0;
-		if (tss_get_ticket(client->tss, &ticket, &tsize) < 0) {
+		if (tss_response_get_ap_ticket(client->tss, &ticket, &tsize) < 0) {
 			error("ERROR: Unable to get ApTicket from TSS request\n");
 			return -1;
 		}
@@ -224,34 +235,98 @@ int dfu_send_component(struct idevicerestore_client_t* client, plist_t build_ide
 }
 
 int dfu_get_cpid(struct idevicerestore_client_t* client, unsigned int* cpid) {
-	irecv_error_t dfu_error = IRECV_E_SUCCESS;
-
 	if(client->dfu == NULL) {
 		if (dfu_client_new(client) < 0) {
 			return -1;
 		}
 	}
 
-	dfu_error = irecv_get_cpid(client->dfu->client, cpid);
-	if (dfu_error != IRECV_E_SUCCESS) {
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->dfu->client);
+	if (!device_info) {
 		return -1;
+	}
+
+	*cpid = device_info->cpid;
+
+	return 0;
+}
+
+int dfu_get_ecid(struct idevicerestore_client_t* client, uint64_t* ecid) {
+	if(client->dfu == NULL) {
+		if (dfu_client_new(client) < 0) {
+			return -1;
+		}
+	}
+
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->dfu->client);
+	if (!device_info) {
+		return -1;
+	}
+
+	*ecid = device_info->ecid;
+
+	return 0;
+}
+
+int dfu_is_image4_supported(struct idevicerestore_client_t* client)
+{
+	if(client->dfu == NULL) {
+		if (dfu_client_new(client) < 0) {
+			return 0;
+		}
+	}
+
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->dfu->client);
+	if (!device_info) {
+		return 0;
+	}
+
+	return (device_info->ibfl & IBOOT_FLAG_IMAGE4_AWARE);
+}
+
+int dfu_get_ap_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size) {
+	if(client->dfu == NULL) {
+		if (dfu_client_new(client) < 0) {
+			return -1;
+		}
+	}
+
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->dfu->client);
+	if (!device_info) {
+		return -1;
+	}
+
+	if (device_info->ap_nonce && device_info->ap_nonce_size > 0) {
+		*nonce = (unsigned char*)malloc(device_info->ap_nonce_size);
+		if (!*nonce) {
+			return -1;
+		}
+		*nonce_size = device_info->ap_nonce_size;
+		memcpy(*nonce, device_info->ap_nonce, *nonce_size);
 	}
 
 	return 0;
 }
 
-int dfu_get_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size) {
-	irecv_error_t dfu_error = IRECV_E_SUCCESS;
-
+int dfu_get_sep_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size) {
 	if(client->dfu == NULL) {
 		if (dfu_client_new(client) < 0) {
 			return -1;
 		}
 	}
 
-	dfu_error = irecv_get_nonce(client->dfu->client, nonce, nonce_size);
-	if (dfu_error != IRECV_E_SUCCESS) {
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->dfu->client);
+	if (!device_info) {
 		return -1;
+	}
+
+	if (device_info->sep_nonce && device_info->sep_nonce_size > 0) {
+		*nonce = (unsigned char*)malloc(device_info->sep_nonce_size);
+		if (!*nonce) {
+			return -1;
+		}
+		*nonce_size = device_info->sep_nonce_size;
+		memcpy(*nonce, device_info->sep_nonce, *nonce_size);
 	}
 
 	return 0;
@@ -301,8 +376,8 @@ int dfu_enter_recovery(struct idevicerestore_client_t* client, plist_t build_ide
 		unsigned char* nonce = NULL;
 		int nonce_size = 0;
 		int nonce_changed = 0;
-		if (dfu_get_nonce(client, &nonce, &nonce_size) < 0) {
-			error("ERROR: Unable to get nonce from device!\n");
+		if (dfu_get_ap_nonce(client, &nonce, &nonce_size) < 0) {
+			error("ERROR: Unable to get ApNonce from device!\n");
 			return -1;
 		}
 
@@ -327,7 +402,7 @@ int dfu_enter_recovery(struct idevicerestore_client_t* client, plist_t build_ide
 		if (nonce_changed && !(client->flags & FLAG_CUSTOM)) {
 			// Welcome iOS5. We have to re-request the TSS with our nonce.
 			plist_free(client->tss);
-			if (get_shsh_blobs(client, client->ecid, client->nonce, client->nonce_size, build_identity, &client->tss) < 0) {
+			if (get_tss_response(client, build_identity, &client->tss) < 0) {
 				error("ERROR: Unable to get SHSH blobs for this device\n");
 				return -1;
 			}

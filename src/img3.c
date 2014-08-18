@@ -29,7 +29,11 @@
 #include "common.h"
 #include "idevicerestore.h"
 
-img3_file* img3_parse_file(unsigned char* data, unsigned int size) {
+static void img3_free(img3_file* image);
+static img3_element* img3_parse_element(const unsigned char* data);
+static void img3_free_element(img3_element* element);
+
+static img3_file* img3_parse_file(const unsigned char* data, unsigned int size) {
 	unsigned int data_offset = 0;
 	img3_element* element;
 	img3_header* header = (img3_header*) data;
@@ -196,7 +200,7 @@ img3_file* img3_parse_file(unsigned char* data, unsigned int size) {
 	return image;
 }
 
-img3_element* img3_parse_element(unsigned char* data) {
+static img3_element* img3_parse_element(const unsigned char* data) {
 	img3_element_header* element_header = (img3_element_header*) data;
 	img3_element* element = (img3_element*) malloc(sizeof(img3_element));
 	if (element == NULL) {
@@ -218,7 +222,7 @@ img3_element* img3_parse_element(unsigned char* data) {
 	return element;
 }
 
-void img3_free(img3_file* image) {
+static void img3_free(img3_file* image) {
 	if (image != NULL) {
 		if (image->header != NULL) {
 			free(image->header);
@@ -234,7 +238,7 @@ void img3_free(img3_file* image) {
 	}
 }
 
-void img3_free_element(img3_element* element) {
+static void img3_free_element(img3_element* element) {
 	if (element != NULL) {
 		if (element->data != NULL) {
 			free(element->data);
@@ -245,7 +249,7 @@ void img3_free_element(img3_element* element) {
 	}
 }
 
-int img3_replace_signature(img3_file* image, unsigned char* signature) {
+static int img3_replace_signature(img3_file* image, const unsigned char* signature) {
 	int i, oldidx;
 	int offset = 0;
 	img3_element* ecid = img3_parse_element(&signature[offset]);
@@ -350,7 +354,7 @@ int img3_replace_signature(img3_file* image, unsigned char* signature) {
 	return 0;
 }
 
-int img3_get_data(img3_file* image, unsigned char** pdata, unsigned int* psize) {
+static int img3_get_data(img3_file* image, unsigned char** pdata, unsigned int* psize) {
 	int i;
 	int offset = 0;
 	int size = sizeof(img3_header);
@@ -395,5 +399,53 @@ int img3_get_data(img3_file* image, unsigned char** pdata, unsigned int* psize) 
 
 	*pdata = data;
 	*psize = size;
+	return 0;
+}
+
+int img3_stitch_component(const char* component_name, const unsigned char* component_data, unsigned int component_size, const unsigned char* blob, unsigned int blob_size, unsigned char** img3_data, unsigned int *img3_size)
+{
+	img3_file *img3 = NULL;
+	unsigned char* outbuf = NULL;
+	unsigned int outsize = 0;
+
+	if (!component_name || !component_data || component_size == 0 || !blob || blob_size == 0 || !img3_data || !img3_size) {
+		return -1;
+	}
+
+	info("Personalizing IMG3 component %s...\n", component_name);
+	
+	/* parse current component as img3 */
+	img3 = img3_parse_file(component_data, component_size);
+	if (img3 == NULL) {
+		error("ERROR: Unable to parse %s IMG3 file\n", component_name);
+		return -1;
+	}
+
+	if (((img3_element_header*)blob)->full_size != blob_size) {
+		error("ERROR: Invalid blob passed for %s IMG3: The size %d embedded in the blob does not match the passed size of %d\n", component_name, ((img3_element_header*)blob)->full_size, blob_size, component_name);
+		img3_free(img3);
+		return -1;
+	}
+
+	/* personalize the component using the blob */
+	if (img3_replace_signature(img3, blob) < 0) {
+		error("ERROR: Unable to replace %s IMG3 signature\n", component_name);
+		img3_free(img3);
+		return -1;
+	}
+
+	/* get the img3 file as data */
+	if (img3_get_data(img3, &outbuf, &outsize) < 0) {
+		error("ERROR: Unable to reconstruct %s IMG3\n", component_name);
+		img3_free(img3);
+		return -1;
+	}
+
+	/* cleanup */
+	img3_free(img3);
+
+	*img3_data = outbuf;
+	*img3_size = outsize;
+
 	return 0;
 }

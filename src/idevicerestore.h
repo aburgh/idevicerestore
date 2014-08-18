@@ -75,10 +75,10 @@ void usage(int argc, char* argv[]);
 int check_mode(struct idevicerestore_client_t* client);
 const char* check_product_type(struct idevicerestore_client_t* client);
 int get_ecid(struct idevicerestore_client_t* client, uint64_t* ecid);
-int get_bdid(struct idevicerestore_client_t* client, uint32_t* bdid);
-int get_cpid(struct idevicerestore_client_t* client, uint32_t* cpid);
-int get_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size);
-int get_shsh_blobs(struct idevicerestore_client_t* client, uint64_t ecid, unsigned char* nonce, int nonce_size, plist_t build_identity, plist_t* tss);
+int is_image4_supported(struct idevicerestore_client_t* client);
+int get_ap_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size);
+int get_sep_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size);
+int get_tss_response(struct idevicerestore_client_t* client, plist_t build_identity, plist_t* tss);
 void fixup_tss(plist_t tss);
 int build_manifest_get_identity_count(plist_t build_manifest);
 int build_manifest_check_compatibility(plist_t build_manifest, const char* product);
@@ -87,9 +87,12 @@ int build_manifest_get_identity_count(plist_t build_manifest);
 plist_t build_manifest_get_build_identity(plist_t build_manifest, uint32_t identity);
 int build_manifest_get_build_count(plist_t build_manifest);
 void build_identity_print_information(plist_t build_identity);
+int build_identity_has_component(plist_t build_identity, const char* component);
 int build_identity_get_component_path(plist_t build_identity, const char* component, char** path);
 int ipsw_extract_filesystem(const char* ipsw, plist_t build_identity, char** filesystem);
-int ipsw_get_component_by_path(const char* ipsw, plist_t tss, const char* component, const char* path, unsigned char** data, unsigned int* size);
+int extract_component(const char* ipsw, const char* path, unsigned char** component_data, unsigned int* component_size);
+int personalize_component(const char *component, const unsigned char* component_data, unsigned int component_size, plist_t tss_response, unsigned char** personalized_component, unsigned int* personalized_component_size);
+
 const char* get_component_name(const char* filename);
 
 #ifdef __cplusplus

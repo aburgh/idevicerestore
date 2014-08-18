@@ -35,7 +35,6 @@ static void fls_parse_elements(fls_file* fls)
 		return;
 	}
 	uint32_t offset = 0;
-	uint32_t max = fls->size;
 	fls->max_elements = 32;
 	fls->elements = (fls_element**)malloc(sizeof(fls_element*) * fls->max_elements);
 
@@ -55,7 +54,7 @@ static void fls_parse_elements(fls_file* fls)
 			fls_0c_element* xe = (fls_0c_element*)malloc(sizeof(fls_0c_element));
 			memset(xe, '\0', sizeof(fls_0c_element));
 			memcpy((void*)xe, p, hdrsize);
-			xe->data = (xe->size > hdrsize) ? xe->data = p + hdrsize : NULL;
+			xe->data = (xe->size > hdrsize) ? p + hdrsize : NULL;
 			ne = (fls_element*)xe;
 			fls->c_element = xe;
 			}
@@ -66,7 +65,7 @@ static void fls_parse_elements(fls_file* fls)
 			fls_10_element* xe = (fls_10_element*)malloc(sizeof(fls_10_element));
 			memset(xe, '\0', sizeof(fls_10_element));
 			memcpy((void*)xe, p, hdrsize);
-			xe->data = (xe->size > hdrsize) ? xe->data = p + hdrsize : NULL;
+			xe->data = (xe->size > hdrsize) ? p + hdrsize : NULL;
 			ne = (fls_element*)xe;
 			}
 			break;
@@ -76,7 +75,7 @@ static void fls_parse_elements(fls_file* fls)
 			fls_14_element* xe = (fls_14_element*)malloc(sizeof(fls_14_element));
 			memset(xe, '\0', sizeof(fls_14_element));
 			memcpy((void*)xe, p, hdrsize);
-			xe->data = (xe->size > hdrsize) ? xe->data = p + hdrsize : NULL;
+			xe->data = (xe->size > hdrsize) ? p + hdrsize : NULL;
 			ne = (fls_element*)xe;
 			}
 			break;
@@ -86,7 +85,7 @@ static void fls_parse_elements(fls_file* fls)
 			memset(ne, '\0', sizeof(fls_element));
 			ne->type = cur->type;
 			ne->size = cur->size;
-			ne->data = (ne->size > hdrsize) ? ne->data = p + hdrsize : NULL;
+			ne->data = (ne->size > hdrsize) ? p + hdrsize : NULL;
 			break;
 		}
 		if ((fls->num_elements + 1) > fls->max_elements) {
@@ -159,7 +158,7 @@ int fls_update_sig_blob(fls_file* fls, const unsigned char* sigdata, unsigned in
 	uint32_t oldsiglen = datasize - sigoffset;
 	uint32_t newsize = fls->size - oldsiglen + siglen;
 
-	int i;
+	unsigned int i;
 	uint32_t offset = 0;
 	void* newdata = malloc(newsize);
 	if (!newdata) {
@@ -257,7 +256,7 @@ int fls_insert_ticket(fls_file* fls, const unsigned char* data, unsigned int siz
 		padding = 4-(size%4);
 	}
 	uint32_t newsize = fls->size + size + padding;
-	int i;
+	unsigned int i;
 	uint32_t offset = 0;
 	void* newdata = malloc(newsize);
 	if (!newdata) {

@@ -46,10 +46,11 @@ int normal_client_new(struct idevicerestore_client_t* client);
 void normal_client_free(struct idevicerestore_client_t* client);
 int normal_open_with_timeout(struct idevicerestore_client_t* client);
 int normal_enter_recovery(struct idevicerestore_client_t* client);
-int normal_get_cpid(struct idevicerestore_client_t* client, uint32_t* cpid);
-int normal_get_bdid(struct idevicerestore_client_t* client, uint32_t* bdid);
 int normal_get_ecid(struct idevicerestore_client_t* client, uint64_t* ecid);
-int normal_get_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size);
+int normal_is_image4_supported(struct idevicerestore_client_t* client);
+int normal_get_ap_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size);
+int normal_get_sep_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size);
+int normal_get_preflight_info(struct idevicerestore_client_t* client, plist_t *preflight_info);
 
 #ifdef __cplusplus
 }

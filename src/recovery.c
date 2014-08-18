@@ -86,11 +86,9 @@ int recovery_client_new(struct idevicerestore_client_t* client) {
 	}
 
 	if (client->srnm == NULL) {
-		char snbuf[256];
-		snbuf[0] = '\0';
-		irecv_get_srnm(recovery, snbuf);
-		if (snbuf[0] != '\0') {
-			client->srnm = strdup(snbuf);
+		const struct irecv_device_info *device_info = irecv_get_device_info(recovery);
+		if (device_info && device_info->srnm) {
+			client->srnm = strdup(device_info->srnm);
 			info("INFO: device serial number is %s\n", client->srnm);
 		}
 	}
@@ -144,9 +142,6 @@ int recovery_set_autoboot(struct idevicerestore_client_t* client, int enable) {
 }
 
 int recovery_enter_restore(struct idevicerestore_client_t* client, plist_t build_identity) {
-	idevice_t device = NULL;
-	restored_client_t restore = NULL;
-
 	if (client->build_major >= 8) {
 		client->restore_boot_args = strdup("rd=md0 nand-enable-reformat=1 -progress");
 	}
@@ -160,10 +155,12 @@ int recovery_enter_restore(struct idevicerestore_client_t* client, plist_t build
 	}
 
 	if ((client->build_major > 8) && !(client->flags & FLAG_CUSTOM)) {
-		/* send ApTicket */
-		if (recovery_send_ticket(client) < 0) {
-			error("ERROR: Unable to send APTicket\n");
-			return -1;
+		if (!client->image4supported) {
+			/* send ApTicket */
+			if (recovery_send_ticket(client) < 0) {
+				error("ERROR: Unable to send APTicket\n");
+				return -1;
+			}
 		}
 	}
 
@@ -238,7 +235,7 @@ int recovery_send_ticket(struct idevicerestore_client_t* client)
 
 	unsigned char* data = NULL;
 	uint32_t size = 0;
-	if (tss_get_ticket(client->tss, &data, &size) < 0) {
+	if (tss_response_get_ap_ticket(client->tss, &data, &size) < 0) {
 		error("ERROR: Unable to get ApTicket from TSS request\n");
 		return -1;
 	}
@@ -265,11 +262,10 @@ int recovery_send_component(struct idevicerestore_client_t* client, plist_t buil
 	unsigned int size = 0;
 	unsigned char* data = NULL;
 	char* path = NULL;
-	char* blob = NULL;
 	irecv_error_t err = 0;
 
 	if (client->tss) {
-		if (tss_get_entry_path(client->tss, component, &path) < 0) {
+		if (tss_response_get_path_by_entry(client->tss, component, &path) < 0) {
 			debug("NOTE: No path for component %s in TSS, will fetch from build_identity\n", component);
 		}
 	}
@@ -282,11 +278,23 @@ int recovery_send_component(struct idevicerestore_client_t* client, plist_t buil
 		}
 	}
 
-	if (ipsw_get_component_by_path(client->ipsw, client->tss, component, path, &data, &size) < 0) {
-		error("ERROR: Unable to get component: %s\n", component);
+	unsigned char* component_data = NULL;
+	unsigned int component_size = 0;
+
+	if (extract_component(client->ipsw, path, &component_data, &component_size) < 0) {
+		error("ERROR: Unable to extract component: %s\n", component);
 		free(path);
 		return -1;
 	}
+
+	if (personalize_component(component, component_data, component_size, client->tss, &data, &size) < 0) {
+		error("ERROR: Unable to get personalized component: %s\n", component);
+		free(component_data);
+		free(path);
+		return -1;
+	}
+	free(component_data);
+	component_data = NULL;	
 
 	info("Sending %s (%d bytes)...\n", component, size);
 
@@ -344,7 +352,7 @@ int recovery_send_applelogo(struct idevicerestore_client_t* client, plist_t buil
 		return -1;
 	}
 
-	recovery_error = irecv_send_command(client->recovery->client, "setpicture 0");
+	recovery_error = irecv_send_command(client->recovery->client, "setpicture 2");
 	if (recovery_error != IRECV_E_SUCCESS) {
 		error("ERROR: Unable to set %s\n", component);
 		return -1;
@@ -392,6 +400,9 @@ int recovery_send_ramdisk(struct idevicerestore_client_t* client, plist_t build_
 			return -1;
 		}
 	}
+
+	irecv_send_command(client->recovery->client, "getenv ramdisk-size");
+	irecv_receive(client->recovery->client);
 
 	if (recovery_send_component(client, build_identity, component) < 0) {
 		error("ERROR: Unable to send %s to device.\n", component);
@@ -445,68 +456,81 @@ int recovery_send_kernelcache(struct idevicerestore_client_t* client, plist_t bu
 }
 
 int recovery_get_ecid(struct idevicerestore_client_t* client, uint64_t* ecid) {
-	irecv_error_t recovery_error = IRECV_E_SUCCESS;
-
 	if(client->recovery == NULL) {
 		if (recovery_client_new(client) < 0) {
 			return -1;
 		}
 	}
 
-	recovery_error = irecv_get_ecid(client->recovery->client, (long long unsigned int*)ecid);
-	if (recovery_error != IRECV_E_SUCCESS) {
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->recovery->client);
+	if (!device_info) {
 		return -1;
+	}
+
+	*ecid = device_info->ecid;
+
+	return 0;
+}
+
+int recovery_is_image4_supported(struct idevicerestore_client_t* client)
+{
+	if(client->recovery == NULL) {
+		if (recovery_client_new(client) < 0) {
+			return 0;
+		}
+	}
+
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->recovery->client);
+	if (!device_info) {
+		return 0;
+	}
+
+	return (device_info->ibfl & IBOOT_FLAG_IMAGE4_AWARE);
+}
+
+int recovery_get_ap_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size) {
+	if(client->recovery == NULL) {
+		if (recovery_client_new(client) < 0) {
+			return -1;
+		}
+	}
+
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->recovery->client);
+	if (!device_info) {
+		return -1;
+	}
+
+	if (device_info->ap_nonce && device_info->ap_nonce_size > 0) {
+		*nonce = (unsigned char*)malloc(device_info->ap_nonce_size);
+		if (!*nonce) {
+			return -1;
+		}
+		*nonce_size = device_info->ap_nonce_size;
+		memcpy(*nonce, device_info->ap_nonce, *nonce_size);
 	}
 
 	return 0;
 }
 
-int recovery_get_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size) {
-	irecv_error_t recovery_error = IRECV_E_SUCCESS;
-
+int recovery_get_sep_nonce(struct idevicerestore_client_t* client, unsigned char** nonce, int* nonce_size) {
 	if(client->recovery == NULL) {
 		if (recovery_client_new(client) < 0) {
 			return -1;
 		}
 	}
 
-	recovery_error = irecv_get_nonce(client->recovery->client, nonce, nonce_size);
-	if (recovery_error != IRECV_E_SUCCESS) {
+	const struct irecv_device_info *device_info = irecv_get_device_info(client->recovery->client);
+	if (!device_info) {
 		return -1;
 	}
 
-	return 0;
-}
-
-int recovery_get_cpid(struct idevicerestore_client_t* client, uint32_t* cpid) {
-	irecv_error_t recovery_error = IRECV_E_SUCCESS;
-
-	if(client->recovery == NULL) {
-		if (recovery_client_new(client) < 0) {
+	if (device_info->sep_nonce && device_info->sep_nonce_size > 0) {
+		*nonce = (unsigned char*)malloc(device_info->sep_nonce_size);
+		if (!*nonce) {
 			return -1;
 		}
-	}
-
-	recovery_error = irecv_get_cpid(client->recovery->client, cpid);
-	if (recovery_error != IRECV_E_SUCCESS) {
-		return -1;
-	}
-
-	return 0;
-}
-
-int recovery_get_bdid(struct idevicerestore_client_t* client, uint32_t* bdid) {
-	irecv_error_t recovery_error = IRECV_E_SUCCESS;
-
-	if(client->recovery == NULL) {
-		if (recovery_client_new(client) < 0) {
-			return -1;
-		}
-	}
-
-	recovery_error = irecv_get_bdid(client->recovery->client, bdid);
-	if (recovery_error != IRECV_E_SUCCESS) {
-		return -1;
+		*nonce_size = device_info->sep_nonce_size;
+		memcpy(*nonce, device_info->sep_nonce, *nonce_size);
 	}
 
 	return 0;
@@ -514,7 +538,7 @@ int recovery_get_bdid(struct idevicerestore_client_t* client, uint32_t* bdid) {
 
 int recovery_send_reset(struct idevicerestore_client_t* client)
 {
-	irecv_error_t recovery_error = irecv_send_command(client->recovery->client, "reset");
+	irecv_send_command(client->recovery->client, "reset");
 	return 0;
 }
 

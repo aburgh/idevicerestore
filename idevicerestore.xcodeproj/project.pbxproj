@@ -31,6 +31,7 @@
 		96B79FB917EF4DA3008E32EB /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = 96B79FB717EF4DA3008E32EB /* plist.c */; };
 		96B79FBB17EF4E6A008E32EB /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B79FBA17EF4E6A008E32EB /* CoreFoundation.framework */; };
 		96B79FBD17EF4E90008E32EB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B79FBC17EF4E90008E32EB /* libz.dylib */; };
+		96FE2A6F19A18F1E00B4E2FE /* img4.c in Sources */ = {isa = PBXBuildFile; fileRef = 96FE2A6D19A18F1E00B4E2FE /* img4.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -97,6 +98,8 @@
 		96B79FB817EF4DA3008E32EB /* plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plist.h; sourceTree = "<group>"; };
 		96B79FBA17EF4E6A008E32EB /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		96B79FBC17EF4E90008E32EB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		96FE2A6D19A18F1E00B4E2FE /* img4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = img4.c; sourceTree = "<group>"; };
+		96FE2A6E19A18F1E00B4E2FE /* img4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = img4.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 				9624E810128C9FF5003ECC22 /* idevicerestore.h */,
 				9624E811128C9FF5003ECC22 /* img3.c */,
 				9624E812128C9FF5003ECC22 /* img3.h */,
+				96FE2A6D19A18F1E00B4E2FE /* img4.c */,
+				96FE2A6E19A18F1E00B4E2FE /* img4.h */,
 				9624E813128C9FF5003ECC22 /* ipsw.c */,
 				9624E814128C9FF5003ECC22 /* ipsw.h */,
 				9698ABBA17EF1D8900C9079F /* limera1n.c */,
@@ -280,6 +285,7 @@
 				9624E823128C9FF5003ECC22 /* restore.c in Sources */,
 				96AA17E417F31398003C8B5F /* locking.c in Sources */,
 				9624E824128C9FF5003ECC22 /* tss.c in Sources */,
+				96FE2A6F19A18F1E00B4E2FE /* img4.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
